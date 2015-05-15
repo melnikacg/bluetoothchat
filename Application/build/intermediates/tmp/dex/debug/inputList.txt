@@ -1,0 +1,6 @@
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\classes\debug
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\pre-dexed\debug\support-annotations-21.0.2-f94f580a7ad5d4ceb5d640019b0941b5e8f2da22.jar
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\pre-dexed\debug\classes-e32c31e5864e478ff7799a0e6e15398522d11aea.jar
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\pre-dexed\debug\classes-171b9d1db5d7cec113872974080f33c40d0dd303.jar
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\pre-dexed\debug\internal_impl-21.0.2-a42c101eb200c2483894880d82fb3d8ddddf65f3.jar
+C:\Users\Admin\ClonedFromGithubProjects\BluetoothChat\Application\build\intermediates\pre-dexed\debug\classes-03a36eba7401a524f10d12bcfd6e85a0667d9b9f.jar
