@@ -293,7 +293,11 @@ public class BluetoothChatService {
         private String mSocketType;
 
         public AcceptThread(boolean secure) {
+
+            // MO using temporary object since
+            // mmServerSocket is final object
             BluetoothServerSocket tmp = null;
+
             mSocketType = secure ? "Secure" : "Insecure";
 
             // Create a new listening server socket
@@ -330,12 +334,14 @@ public class BluetoothChatService {
                 }
 
                 // If a connection was accepted
+                // MO action when a connection has been accepted
                 if (socket != null) {
                     synchronized (BluetoothChatService.this) {
                         switch (mState) {
                             case STATE_LISTEN:
                             case STATE_CONNECTING:
                                 // Situation normal. Start the connected thread.
+                                // MO sending message
                                 connected(socket, socket.getRemoteDevice(),
                                         mSocketType);
                                 break;
@@ -343,6 +349,8 @@ public class BluetoothChatService {
                             case STATE_CONNECTED:
                                 // Either not ready or already connected. Terminate new socket.
                                 try {
+
+                                    //MO terminating socket when operation is done
                                     socket.close();
                                 } catch (IOException e) {
                                     Log.e(TAG, "Could not close unwanted socket", e);
@@ -515,5 +523,16 @@ public class BluetoothChatService {
                 Log.e(TAG, "close() of connect socket failed", e);
             }
         }
+    }
+
+    /**
+     * Disconnect from a remote device.
+     */
+    public synchronized void disconnect() {
+        Log.d(TAG, "to disconnect connect.");
+
+        // Start the thread to connect with the given device
+        mConnectedThread.cancel();
+        setState(STATE_NONE);
     }
 }

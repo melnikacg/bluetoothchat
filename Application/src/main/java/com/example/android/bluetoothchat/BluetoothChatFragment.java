@@ -43,6 +43,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.common.logger.Log;
+import com.example.android.common.model.AccountItem;
+import com.google.gson.Gson;
 
 /**
  * This fragment controls Bluetooth to communicate with other devices.
@@ -60,6 +62,8 @@ public class BluetoothChatFragment extends Fragment {
     private ListView mConversationView;
     private EditText mOutEditText;
     private Button mSendButton;
+
+    private Button mSendWalletsButton;
 
     /**
      * Name of the connected device
@@ -151,6 +155,8 @@ public class BluetoothChatFragment extends Fragment {
         mConversationView = (ListView) view.findViewById(R.id.in);
         mOutEditText = (EditText) view.findViewById(R.id.edit_text_out);
         mSendButton = (Button) view.findViewById(R.id.button_send);
+
+        mSendWalletsButton = (Button) view.findViewById(R.id.button_send_wallets);
     }
 
     /**
@@ -177,6 +183,20 @@ public class BluetoothChatFragment extends Fragment {
                     String message = textView.getText().toString();
                     sendMessage(message);
                 }
+            }
+        });
+
+        // MO
+        // Initialize the send wallets button with a listener that for click events
+        mSendWalletsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Send a message using content of the edit text widget
+                AccountItem accountItem = AccountItem.createDummyAccount();
+
+                Gson gson = new Gson();
+                String json = gson.toJson(accountItem);
+
+                sendMessage(json);
             }
         });
 
